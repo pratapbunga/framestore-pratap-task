@@ -13,9 +13,8 @@ export default function Feed() {
     const url = `https://api.walls.io/v1/posts?access_token=${ACCESS_TOKEN}&fields=id,comment,type,external_image,external_name,post_image,post_video,post_link,created,modified&limit=50&include_inactive=1&sort=-created,-id&before=${state}&media_types=video,image`   
 
     try {
-      const response = await axios.get(`http://localhost:8080/cors?`, {params:{ url: url}});
-      const data = await response.data.data;   
-      console.log(data)   
+      const response = await axios.get(`http://localhost:8080/cors?`, {params:{ url}});
+      const data = await response.data.data;     
       return data;
     }
     catch (e) {
@@ -25,11 +24,12 @@ export default function Feed() {
 
   const { data, loading} = useAsync(fetcher);
 
-
   if(loading === true) return <p>loading....</p>
 
   return (
     <div className="flex flex-col items-center container">
+      <h1>Framestore Social Media Feed</h1>
+      <br />
       <ul className="location-list">
       {data?.map((item, i) => {
           return (

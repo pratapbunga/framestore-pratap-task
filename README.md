@@ -1,8 +1,11 @@
-# Getting Started with App
+# Framestore Task
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Requirements covered
 
-## APP
+1. Used Twitter & youtube feeds to display
+2. Used wall.io as proxy to combine and request various social media posts from Framestore.
+
+## Getting Started with App
 
 This app contains two parts:
 
@@ -11,15 +14,21 @@ This app contains two parts:
 
 ## Start Server
 
-Need to start two server to use the app.
+Need to start two server to run the app.
 
-1. Frontend App
-   cd framestore-pratap-task
-   npm start
+1. Front End
+
+- Setup
+  - Install dependencies: `npm install`
+- Run
+  - Start Landing server: `npm start`, browse at http://localhost:3000
 
 2. Proxy server
-   cd framestore-pratap-task/proxyServer
-   node app
+
+- Setup
+  - Move to : `/proxyServer` folder
+- Run
+  - Start server: `node app`, which runs on http://localhost:8080
 
 ## Need of Proxy Server
 
