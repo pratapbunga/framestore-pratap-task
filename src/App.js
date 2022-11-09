@@ -1,10 +1,13 @@
-import "./App.css";
+import Layout from "./components/Layout";
 import Feed from "./module/Feed";
+import "./styles.scss";
 
 function App() {
   return (
     <div className="App">
-      <Feed />
+      <Layout>
+        <Feed />
+      </Layout>
     </div>
   );
 }
