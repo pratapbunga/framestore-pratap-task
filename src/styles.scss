@@ -1,9 +1,59 @@
+:root {
+  --background: white;
+  --text-primary: black;
+}
+
+[data-theme="dark"] {
+  --background: black;
+  --text-primary: white;
+}
+
 $card-width-desktop: 650px;
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+.layout {
+  background: var(--background);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 300ms;
+}
+
+.header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .title {
+    font-size: 36px;
+    font-weight: bold;
+    padding: 0 20px;
+  }
+
+  .theme-button {
+    outline: none;
+    padding: 0 20px;
+    font-size: 24px;
+    cursor: pointer;
+    a {
+      color: var(--text-primary);
+    }
+  }
+}
+
+main {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .page {
@@ -21,6 +71,7 @@ $card-width-desktop: 650px;
 
 .list {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -86,4 +137,44 @@ $card-width-desktop: 650px;
       }
     }
   }
+}
+
+.login-btn {
+  background-image: linear-gradient(
+    to right,
+    #da22ff 0%,
+    #9733ee 51%,
+    #da22ff 100%
+  );
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  cursor: pointer;
+  margin-top: 50px;
+  text-decoration: none;
+}
+
+.login-btn:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(102, 103, 107, 0.2);
+  transform: translateY(-2px);
+  transition: 0.3s;
+}
+
+a {
+  text-decoration: none;
+}
+
+// utility classes
+
+.px-10 {
+  padding: 0 10px;
 }

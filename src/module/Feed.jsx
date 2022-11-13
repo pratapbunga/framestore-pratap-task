@@ -34,7 +34,7 @@ export default function Feed() {
 
   return (
     <div className="container">
-      <h1>Framestore Social Media Feed</h1>
+      <h1>Social Media Feed</h1>
       <br />
       <ul className="list">
       {feedList?.map((item, i) => {
