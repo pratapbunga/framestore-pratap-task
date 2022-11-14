@@ -4,11 +4,13 @@ import axios from 'axios';
 import ListItem from '../components/ListItem';
 import useAsync from '../hooks/useAsync';
 import { PROXY_URL } from "../config";
+import useIntersection from '../hooks/useIntersection';
 
 export default function Feed() {
 
   const [paginationId, setPaginationId] = useState(0);
   const [feedList, setFeedList] = useState([]);
+  const elemRef = React.useRef(null);
   
   const fetcher = async () => {
     try {
@@ -20,13 +22,17 @@ export default function Feed() {
       console.log(e)
     }
   };
+  const isIntersecting = useIntersection(elemRef, {rootMargin: '20%'});
+  const { data, loading} = useAsync(fetcher, isIntersecting);
 
-  const { data, loading} = useAsync(fetcher);
   useEffect(() => {
     if(data?.data){
       const list = data.data;
-      setFeedList(list);
-      setPaginationId(list[list.length-1].id);
+      setFeedList(prevList => {
+        let prev = prevList.length > 0 ? prevList : []
+        return [...prev, ...list]
+      });
+      // setPaginationId(list[list.length-1].id);
     }
   }, [data]);
 
@@ -53,6 +59,7 @@ export default function Feed() {
           );
         })}
       </ul>
+       <div ref={elemRef} style={{ padding: "20px" }}></div>
     </div>
   );
 }
